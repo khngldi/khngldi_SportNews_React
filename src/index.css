@@ -21,8 +21,8 @@ a {
   color: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* <-- вернули стандартное поведение */
-  position: relative; /* нужно для абсолютного позиционирования поиска */
+  justify-content: space-between;
+  position: relative;
   height: 55px;
 }
 
@@ -31,7 +31,7 @@ a {
   height: 32px;
   cursor: pointer;
   object-fit: contain;
-  margin-left: 12px; /* или 10px, как тебе нравится */
+  margin-left: 12px;
 }
 
 .navbar-title {

@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../index.css";
+import backButton from "../assets/backButton.svg";
 
 export default function Detail() {
     const { id } = useParams();
@@ -97,7 +98,7 @@ export default function Detail() {
         <div className="page">
             <div className="detail-header">
                 <Link to="/" className="back-button red">
-                    <img src="/src/assets/backButton.svg" alt="Назад" className="back-icon" />
+                    <img src={backButton} alt="Назад" className="back-icon" />
                     Назад
                 </Link>
             </div>
