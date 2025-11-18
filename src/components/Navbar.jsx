@@ -1,6 +1,6 @@
 import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { useState } from "react";
-import menuButton from "../assets/menu-btn.png"
+import menubtn from "../assets/menu-btn.png"
 
 export default function Navbar() {
 
@@ -29,7 +29,7 @@ export default function Navbar() {
     return (
         <nav className="navbar">
             <img
-                src={menuButton}
+                src={menubtn}
                 alt="Menu"
                 className="menu-icon"
                 onClick={() => setMenuOpen(!menuOpen)}
