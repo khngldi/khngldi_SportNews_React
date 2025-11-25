@@ -1,17 +1,18 @@
 import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { useState } from "react";
-import menubtn from "../assets/menu-btn.png"
+import menubtn from "../assets/menu-btn.png";
+import { useAuth } from "./AuthContext";
 
 export default function Navbar() {
-
     const location = useLocation();
     const isHome = location.pathname === "/";
 
     const [menuOpen, setMenuOpen] = useState(false);
-
     const [searchParams, setSearchParams] = useSearchParams();
     const searchQuery = searchParams.get("search") || "";
     const [searchText, setSearchText] = useState(searchQuery);
+
+    const { user, isAuthenticated, logout } = useAuth();
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -53,6 +54,24 @@ export default function Navbar() {
                     <button type="submit">Найти</button>
                 </form>
             )}
+
+            <div className="auth-section">
+                {!isAuthenticated ? (
+                    <>
+                        <NavLink to="/login">
+                            <button className="auth-btn login-btn">Войти</button>
+                        </NavLink>
+                        <NavLink to="/register">
+                            <button className="auth-btn register-btn">Зарегистрироваться</button>
+                        </NavLink>
+                    </>
+                ) : (
+                    <>
+                        <span className="user-email">{user?.email}</span>
+                        <button className="auth-btn logout-btn" onClick={logout}>Выйти</button>
+                    </>
+                )}
+            </div>
         </nav>
     );
 }

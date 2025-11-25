@@ -715,3 +715,129 @@ a {
   background: #f0f0f0;
   padding-left: 20px;
 }
+
+.auth-form-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px 25px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+
+.auth-form-container h2 {
+  margin-bottom: 20px;
+  margin-top: auto;
+  font-size: 22px;
+  color: #222;
+}
+
+.auth-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-form-container input {
+  padding: 10px 15px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.25s border-color, 0.25s box-shadow;
+  width: 370px;
+}
+
+.auth-form-container input:focus {
+  border-color: #5a5a5a;
+  box-shadow: 0 0 5px rgba(90, 90, 90, 0.2);
+}
+
+.auth-form-container button {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  background: #5a5a5a;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 4px 12px rgba(90, 90, 90, 0.3);
+}
+
+.auth-form-container button:hover {
+  background: #444444;
+  box-shadow: 0 6px 16px rgba(90, 90, 90, 0.4);
+}
+
+.auth-message {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #b00020; /* красный для ошибок */
+}
+
+@media (max-width: 480px) {
+  .auth-form-container {
+    margin: 50px 20px;
+    padding: 25px 15px;
+  }
+
+  .auth-form-container input {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .auth-form-container button {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
+.auth-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-section .auth-btn {
+  padding: 8px 14px;
+  background-color: #5a5a5a;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.auth-section .auth-btn:hover {
+  background-color: #888888;
+}
+
+.auth-section .user-email {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* ===== Адаптивность для мобильных ===== */
+@media (max-width: 480px) {
+  .auth-section {
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .auth-section .auth-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .auth-section .user-email {
+    font-size: 13px;
+  }
+}

@@ -1,16 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Detail from "./pages/Detail";
-import Categories from "./pages/Categories";
-import "./index.css";
-import AppRoute from "./components/AppRoute.jsx";
+import AppRoute from "./components/AppRoute";
+import { AuthProvider, useAuth } from "./components/AuthContext";
 
-export default function App() {
+function App() {
     return (
-        <Router>
-            <Navbar />
-            <AppRoute />
-        </Router>
+        <AuthProvider>
+            <Router>
+                <NavbarWrapper />
+                <AppRoute />
+            </Router>
+        </AuthProvider>
     );
 }
+
+function NavbarWrapper() {
+    const { user } = useAuth();
+    return <Navbar userEmail={user?.email} />;
+}
+
+export default App;
