@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
             const data = await response.json();
 
             if (response.ok) {
-                loginSuccess({ email }, data.token);
+                loginSuccess({ username: email }, data.token);
                 return { success: true };
             }
 

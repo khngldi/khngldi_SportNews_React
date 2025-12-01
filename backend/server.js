@@ -30,6 +30,8 @@ const users = [
 ];
 
 app.post('/api/register', (req, res) => {
+    console.log(req.body);
+
     const { username, password } = req.body;
 
     if (users.find(u => u.username === username)) {
@@ -59,6 +61,8 @@ app.post('/api/register', (req, res) => {
 
 
 app.post('/api/login', (req, res) => {
+    console.log(req.body);
+
     const { username, password } = req.body;
 
     const user = users.find(
@@ -83,7 +87,9 @@ app.post('/api/login', (req, res) => {
 });
 
 app.get("/api/profile", (req, res) => {
+    console.log('Headers:', req.headers);
     const header = req.headers.authorization;
+    console.log('Token:', header);
 
     if (!header) {
         return res.status(401).json({ message: "Нет токена" });
