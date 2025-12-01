@@ -67,7 +67,7 @@ export default function Navbar() {
                     </>
                 ) : (
                     <>
-                        <span className="user-email">{user?.email}</span>
+                        <span className="user-email">{user?.username}</span>
                         <button className="auth-btn logout-btn" onClick={logout}>Выйти</button>
                     </>
                 )}

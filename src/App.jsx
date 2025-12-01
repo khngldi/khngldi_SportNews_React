@@ -16,7 +16,7 @@ function App() {
 
 function NavbarWrapper() {
     const { user } = useAuth();
-    return <Navbar userEmail={user?.email} />;
+    return <Navbar userEmail={user?.username} />;
 }
 
 export default App;
