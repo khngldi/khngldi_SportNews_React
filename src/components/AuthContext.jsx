@@ -3,6 +3,8 @@ import { createContext, useContext, useState } from "react";
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
 
+const API_URL = "http://localhost:2000";
+
 export const AuthProvider = ({ children }) => {
 
     const getInitialUser = () => {
@@ -18,7 +20,6 @@ export const AuthProvider = ({ children }) => {
             return null;
         }
     };
-
 
     const [token, setToken] = useState(localStorage.getItem("authToken"));
     const [user, setUser] = useState(getInitialUser());
@@ -37,22 +38,20 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (email, password) => {
         try {
-            const response = await fetch(
-                `https://c3b36cdc3750f333.mokky.dev/register`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email, password }),
-                }
-            );
+            const response = await fetch(`${API_URL}/api/register`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username: email, password }),
+            });
 
             const data = await response.json();
+
             if (response.ok) {
-                loginSuccess(data.user, data.token, email);
+                loginSuccess({ email }, data.token);
                 return { success: true };
             }
 
-            return { success: false, error: data.message || "Ошибка" };
+            return { success: false, error: data.message };
         } catch {
             return { success: false, error: "Ошибка сети" };
         }
@@ -60,22 +59,20 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await fetch(
-                `https://c3b36cdc3750f333.mokky.dev/auth`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email, password }),
-                }
-            );
+            const response = await fetch(`${API_URL}/api/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username: email, password }),
+            });
 
             const data = await response.json();
+
             if (response.ok) {
-                loginSuccess(data.user, data.token, email);
+                loginSuccess({ email }, data.token);
                 return { success: true };
             }
 
-            return { success: false, error: data.message || "Ошибка" };
+            return { success: false, error: data.message };
         } catch {
             return { success: false, error: "Ошибка сети" };
         }
