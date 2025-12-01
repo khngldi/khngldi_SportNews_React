@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
         try {
             const userObj = JSON.parse(storedUser);
-            if (!userObj.email) return null;
+            if (!userObj.username) return null;
             return userObj;
         } catch {
             console.error("Ошибка парсинга authUser");
@@ -25,14 +25,12 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(getInitialUser());
     const isAuthenticated = !!token;
 
-    const loginSuccess = (userData, userToken, email) => {
-        const user = { ...userData, email };
-
+    const loginSuccess = (userData, userToken) => {
         setToken(userToken);
-        setUser(user);
+        setUser(userData);
 
         localStorage.setItem("authToken", userToken);
-        localStorage.setItem("authUser", JSON.stringify(user));
+        localStorage.setItem("authUser", JSON.stringify(userData));
     };
 
 
@@ -47,7 +45,7 @@ export const AuthProvider = ({ children }) => {
             const data = await response.json();
 
             if (response.ok) {
-                loginSuccess({ email }, data.token);
+                loginSuccess({ username: email }, data.token);
                 return { success: true };
             }
 
