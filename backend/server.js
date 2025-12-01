@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.use(cors({
     origin: [
-        "http://localhost:5173",
+        "http://localhost:5174",
         "https://sportnews-rho.vercel.app/"
     ],
 }));
@@ -17,16 +17,16 @@ app.use(cors({
 const JWT_SECRET = "my_super_secret_key_2025";
 
 const users = [
-    { id: 1, username: "user1", password: "111111" },
-    { id: 2, username: "user2", password: "111111" },
-    { id: 3, username: "user3", password: "111111" },
-    { id: 4, username: "user4", password: "111111" },
-    { id: 5, username: "user5", password: "111111" },
-    { id: 6, username: "user6", password: "111111" },
-    { id: 7, username: "user7", password: "111111" },
-    { id: 8, username: "user8", password: "111111" },
-    { id: 9, username: "user9", password: "111111" },
-    { id: 10, username: "user10", password: "111111" }
+    { id: 1, username: "user1@gmail.com", password: "111111" },
+    { id: 2, username: "user2@gmail.com", password: "111111" },
+    { id: 3, username: "user3@gmail.com", password: "111111" },
+    { id: 4, username: "user4@gmail.com", password: "111111" },
+    { id: 5, username: "user5@gmail.com", password: "111111" },
+    { id: 6, username: "user6@gmail.com", password: "111111" },
+    { id: 7, username: "user7@gmail.com", password: "111111" },
+    { id: 8, username: "user8@gmail.com", password: "111111" },
+    { id: 9, username: "user9@gmail.com", password: "111111" },
+    { id: 10, username: "user10@gmail.com", password: "111111" }
 ];
 
 app.post('/api/register', (req, res) => {
